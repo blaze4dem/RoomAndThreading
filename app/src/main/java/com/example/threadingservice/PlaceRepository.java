@@ -1,18 +1,16 @@
 package com.example.threadingservice;
 
 import android.app.Application;
-import android.util.Log;
 
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Room;
 
 public class PlaceRepository {
 
     private PlaceDao mDao;
     private LiveData<List<Place>> allPlaces;
-    private String mName;
+    private int mId;
     private Place mPlace;
 
     public PlaceRepository(Application app){
@@ -45,15 +43,15 @@ public class PlaceRepository {
         });
     }
 
-    public Place getPlace(String name){
+    public Place getPlace(int id){
 
-        mName = name;
+        mId = id;
 
         PlacesDatabase.mExecutorService.execute(new Runnable() {
 
             @Override
             public void run() {
-                mPlace = mDao.getPlace(mName);
+                mPlace = mDao.getPlace(mId);
             }
         });
 

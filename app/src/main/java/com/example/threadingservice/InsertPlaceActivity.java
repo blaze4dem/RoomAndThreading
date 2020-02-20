@@ -14,7 +14,7 @@ import java.util.List;
 
 public class InsertPlaceActivity extends AppCompatActivity {
 
-    public static final String LOG_TAG = "InsertPlace Activity Log Tag";
+    public static final String LOG_TAG = "InsertPlace";
 
     public EditText edit_place_name;
     public EditText edit_place_desc;
@@ -74,12 +74,13 @@ public class InsertPlaceActivity extends AppCompatActivity {
     private void getSavedPlaceData() {
 
         Intent intent = getIntent();
-        String placeName = intent.getStringExtra("Name");
+        int placeId = intent.getIntExtra("id", -1);
 
         PlaceRepository repo = new PlaceRepository(getApplication());
-        mPlace = repo.getPlace(placeName);
+        mPlace = repo.getPlace(placeId);
 
-        Log.v(LOG_TAG, "////////////////////////// " + mPlace + " ///////////////////////////////" );
+        Log.v(LOG_TAG, "////////////////////////// " + placeId + " = ID While PLace = : " + mPlace + " ///////////////////////////////" );
+
 //            edit_place_name.setText(mPlace.getPlaceName());
 //            edit_place_desc.setText(mPlace.getPlaceDescription());
 //            edit_place_image.setText(mPlace.getPlaceImageUrl());

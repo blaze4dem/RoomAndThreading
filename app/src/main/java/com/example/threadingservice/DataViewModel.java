@@ -33,11 +33,9 @@ public class DataViewModel extends AndroidViewModel {
         repo.updatePlace(p);
     }
 
-    public Place getPlace(String name){
+    public Place getPlace(int id){
 
-        Place place = repo.getPlace(name);
-
-        Log.v("LOG TAG","/////////////////////////// In the Model Id is := " + place + " ////////////////////////////");
+        Place place = repo.getPlace(id);
 
         return place;
     }

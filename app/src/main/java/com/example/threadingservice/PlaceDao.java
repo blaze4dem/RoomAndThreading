@@ -30,7 +30,7 @@ public interface PlaceDao {
     @Query("SELECT * FROM places_table")
     LiveData<List<Place>> getAllPlaces();
 
-    @Query("SELECT * FROM places_table WHERE place_name = :name LIMIT 1")
-    public abstract Place getPlace(String name);
+    @Query("SELECT * FROM places_table WHERE id = :id LIMIT 1")
+    public abstract Place getPlace(int id);
 
 }

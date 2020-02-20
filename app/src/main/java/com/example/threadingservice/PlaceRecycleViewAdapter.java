@@ -37,15 +37,15 @@ public class PlaceRecycleViewAdapter extends RecyclerView.Adapter<PlaceRecycleVi
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         if(allPlaces != null){
-            final Place p = allPlaces.get(position);
+            final Place place = allPlaces.get(position);
 
-            holder.bindView(p.getPlaceName(),p.getPlaceDescription());
+            holder.bindView(place.getPlaceName(),place.getPlaceDescription());
 
             View.OnClickListener click = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), InsertPlaceActivity.class);
-                    intent.putExtra("Name", p.getPlaceName());
+                    intent.putExtra("id", place.getId());
 
                     v.getContext().startActivity(intent);
                 }
